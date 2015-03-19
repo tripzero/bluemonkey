@@ -6,6 +6,13 @@ include(CMakeDependentOption)
 set(PROJECT_VERSION "2.0.0")
 set(PROJECT_NAME "bluemonkey")
 set(PROJECT_SERIES "2.0")
+
+add_definitions(-DPROJECT_VERSION="${PROJECT_VERSION}")
+add_definitions(-DPROJECT_NAME="${PROJECT_PRETTY_NAME}")
+add_definitions(-DPROJECT_CODENAME="${PROJECT_CODENAME}")
+add_definitions(-DPROJECT_QUALITY="${PROJECT_QUALITY}")
+add_definitions(-DPROJECT_SERIES="${PROJECT_SERIES}")
+
 set(LIB_SUFFIX "" CACHE STRING "Define suffix of directory name (32/64)" )
 set(LIB_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}/${CMAKE_LIBRARY_ARCHITECTURE}" )
 set(PLUGIN_INSTALL_PATH "${LIB_INSTALL_DIR}/${PROJECT_NAME}")
@@ -109,7 +116,7 @@ set(config_files ${CMAKE_CURRENT_BINARY_DIR}/config.js)
 configure_file (${CMAKE_CURRENT_SOURCE_DIR}/config.js ${CMAKE_CURRENT_BINARY_DIR}/config.js @ONLY)
 configure_file (${CMAKE_CURRENT_SOURCE_DIR}/bmconfig.js ${CMAKE_CURRENT_BINARY_DIR}/bmconfig.js @ONLY)
 
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/README ${CMAKE_CURRENT_BINARY_DIR}/bluemonkey.README.md @ONLY)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/README.md ${CMAKE_CURRENT_BINARY_DIR}/bluemonkey.README.md @ONLY)
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/bluemonkey.in.idl ${CMAKE_CURRENT_BINARY_DIR}/docs/bluemonkey.idl @ONLY)
 
 set(bluemonkey_doc_files ${CMAKE_CURRENT_BINARY_DIR}/bluemonkey.README.md)

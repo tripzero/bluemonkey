@@ -29,8 +29,6 @@
 #include <QJSValue>
 #include <QCoreApplication>
 
-#include "authenticate.h"
-
 class QJSEngine;
 
 class Bluemonkey : public QObject

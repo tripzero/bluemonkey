@@ -26,7 +26,6 @@
 #include <QNetworkProxy>
 #include <QTimer>
 #include <QJSEngine>
-#include <debugout.h>
 
 extern "C" std::map<std::string, QObject*> create(std::map<std::string, std::string> config, QObject* parent)
 {
@@ -66,7 +65,7 @@ IrcCommunication::IrcCommunication(std::map<std::string, std::string> config, QO
 	QFile file(str);
 	if(!file.open(QIODevice::ReadOnly))
 	{
-		DebugOut(DebugOut::Error)<<"failed to open irc config file: "<<str.toStdString()<<endl;
+		qDebug()<<"failed to open irc config file: "<<str;
 		return;
 	}
 
@@ -76,7 +75,7 @@ IrcCommunication::IrcCommunication(std::map<std::string, std::string> config, QO
 
 	QJSValue response = engine->evaluate(script);
 
-	DebugOut()<<response.toString().toStdString()<<endl;
+	qDebug()<<response.toString();
 
 }
 
